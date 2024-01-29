@@ -1,6 +1,9 @@
 import { ConnectButton} from '@rainbow-me/rainbowkit';
-import { useAuthCore } from '@particle-network/auth-core-modal';
+import { useAuthCore, useConnect } from '@particle-network/auth-core-modal';
 import { useEffect } from 'react';
+// import { ConnectButton } from '@particle-network/connectkit';
+
+import '@particle-network/connectkit/dist/index.css';
 
 export default function Test(params) {
     const {
@@ -18,12 +21,30 @@ export default function Test(params) {
         buildWalletUrl,                 // get wallet url, used for open in custom iframe
         openBuy,                        // open buy crypto token website
     } = useAuthCore();    
+    const { connect, disconnect, connectionStatus, requestConnectCaptcha } = useConnect();
+
+    async function test(params) {
+        // const userInfo = await connect();
+        // console.log("====>", userInfo);
+        // openWallet();
+        const userInfo = await connect({
+            socialType: 'google',
+            prompt: 'select_account', //optional, only google, discord and microsoft support it.
+        });
+        console.log("===>", userInfo);
+    }
 
     useEffect(() => {
         console.log(userInfo);
     },[userInfo])
 
     return (
+        <>
         <ConnectButton />
+        <button onClick={test}>test</button>
+        <button onClick={disconnect}>testdisc</button>
+        <button onClick={openWallet}>open</button>
+
+        </>
     )
 }
