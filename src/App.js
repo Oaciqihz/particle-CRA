@@ -2,7 +2,6 @@ import {
   RainbowKitProvider,
   getDefaultWallets,
   connectorsForWallets,
-  ConnectButton
 } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
@@ -23,7 +22,8 @@ import {
 import { ParticleNetwork } from '@particle-network/auth';
 import { particleWallet } from '@particle-network/rainbowkit-ext';
 import '@rainbow-me/rainbowkit/styles.css';
-
+import Test from './pages/Test';
+import React from 'react';
 
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
@@ -43,7 +43,7 @@ const projectId = 'YOUR_PROJECT_ID';
 new ParticleNetwork({
     projectId: "21f970b6-194d-4658-a9b6-686c67a42ae6",
     clientKey: "cvXz9BFEbgJV7lnsPbhkJE4097cTWGGMLCDSva0A",
-    appId: "xx",
+    appId: "7d5de8a5-c161-4241-a3c3-e05022b1acd4",
 });
 
 const particleWallets = [
@@ -86,12 +86,13 @@ const wagmiConfig = createConfig({
 
 function App() {
 
-
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
   return (
     <div className="App">
       <WagmiConfig config={wagmiConfig}>
         <RainbowKitProvider chains={chains} appInfo={demoAppInfo}>
-          <ConnectButton />
+          {mounted && <Test />}
         </RainbowKitProvider>
       </WagmiConfig>
     </div>
