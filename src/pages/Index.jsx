@@ -11,6 +11,7 @@ export default function Index(params) {
             <button onClick={() => navigateTo("/demo1")}>rainbowKit</button>
             <button onClick={() => navigateTo("/demo2")}>particleKit</button>
             <button onClick={() => navigateTo("/demo3")}>particle auth-core-modal</button>
+            <button onClick={() => navigateTo("/web3auth")}>web3Auth-wagmiconnector</button>
         </div>
     )
 }

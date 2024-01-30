@@ -6,7 +6,6 @@ import routes from "./router";
 function App() {
     window.Buffer = window.Buffer || require("buffer").Buffer;
     const outlet = useRoutes(routes);
-
     const [mounted, setMounted] = React.useState(false);
     React.useEffect(() => setMounted(true), []);
     return (

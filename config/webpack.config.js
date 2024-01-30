@@ -294,12 +294,20 @@ module.exports = function (webpackEnv) {
     },
     resolve: {
       fallback: {
-        http: require.resolve('stream-http'),
-        https: require.resolve('https-browserify'),
-        stream: require.resolve('stream-browserify'),
-        assert: require.resolve('assert'),
-        zlib: require.resolve('browserify-zlib'),
-        url: require.resolve('url'),
+        // http: require.resolve('stream-http'),
+        // https: require.resolve('https-browserify'),
+        // stream: require.resolve('stream-browserify'),
+        // assert: require.resolve('assert'),
+        // zlib: require.resolve('browserify-zlib'),
+        // url: require.resolve('url'),
+        crypto: false,
+        stream: false,
+        zlib: false,
+        assert: false,
+        http: false,
+        https: false,
+        os: false,
+        url: false
       },
       plugins:[
           new webpack.ProvidePlugin({
@@ -622,7 +630,11 @@ module.exports = function (webpackEnv) {
       // It is absolutely essential that NODE_ENV is set to production
       // during a production build.
       // Otherwise React will be compiled in the very slow development mode.
-      new webpack.DefinePlugin(env.stringified),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
+        }
+      }),
       // Experimental hot reloading for React .
       // https://github.com/facebook/react/tree/main/packages/react-refresh
       isEnvDevelopment &&

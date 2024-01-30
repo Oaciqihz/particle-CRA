@@ -3,6 +3,7 @@ import Demo2 from "./pages/Demo2";
 import Demo3 from "./pages/Demo3";
 import Demo4 from "./pages/Demo4";
 import Index from "./pages/Index";
+import Web3AuthDemo from "./pages/Web3AuthDemo";
 
 const routes = [
     { 
@@ -24,6 +25,10 @@ const routes = [
     { 
       path: "/demo4",
       element: <Demo4 />,
+    },
+    { 
+      path: "/web3auth",
+      element: <Web3AuthDemo />,
     }
 ];
 export default routes
