@@ -23,7 +23,7 @@ export default function Web3AuthConnectorInstance(chains, loginProvider) {
     const web3AuthInstance = new Web3AuthNoModal({
         clientId: "BBwi_QuQ0kSmu7D6sl-dtg-lixMQAhCC_2qjJnukOlvnsbkezdP8JGydWdx-moHyn9Y_8Rv-bJlwNNclmN2Uj8g",
         chainConfig,
-        web3AuthNetwork: "testnet",
+        web3AuthNetwork: "sapphire_devnet",
     });
 
     const privateKeyProvider = new EthereumPrivateKeyProvider({
